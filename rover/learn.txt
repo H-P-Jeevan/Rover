@@ -1,0 +1,17 @@
+add joints - http://wiki.ros.org/urdf/XML/joint
+
+plugins - http://gazebosim.org/tutorials?tut=ros_gzplugins
+
+install package - sudo apt install ros-melodic-slam-gmapping
+
+install rosserial - http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup
+
+ros and Arduino commands - rosrun rosserial_arduino serial_node.py _port:=/dev/ttyACM0 _baud:=57600
+
+setup Arduino port - ls -l /dev/ttyACM0
+
+                    sudo chmod a+rw /dev/ttyACM0
+
+ros web learn - https://msadowski.github.io/ros-web-tutorial-pt1/
+
+

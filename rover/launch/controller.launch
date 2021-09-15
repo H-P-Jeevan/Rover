@@ -1,0 +1,11 @@
+<launch>
+
+<rosparam file="$(find rover)/launch/controller.yaml" command="load"/>
+
+<node args="Rev10_position_controller Rev11_position_controller joint_state_controller " name="controller_spawner" ns="mark1" output="screen" pkg="controller_manager" respawn="false" type="spawner"/>
+
+<node name="robot_state_publisher" output="screen" pkg="robot_state_publisher" respawn="false" type="robot_state_publisher">
+  <remap from="/joint_states" to="/mark1/joint_states"/>
+</node>
+
+</launch>
