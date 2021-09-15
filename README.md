@@ -1,6 +1,6 @@
 # Rover
 
-In this project we deal with the design and control of a drone that can transport packages to different locations. The drone consists of 4 propellers and a gripper at the bottom which can be used to pick and place objects. It consists of a camera, four laser sensors that are used to detect any surrounding obstacles, and GPS and IMU sensors to get the position and orientation estimate of the drone. We built a cascaded control system which uses two PID controllers to control the roll, pitch, yaw and position of the drone. We used motor mixing algorithms to convert these control signals into signals that power the propellers. To avoid obstacles we had used bug0 algorithms. We used machine learning algorithms to generate haarcascade files to detect markers so that the drone could be landed on the marker. 
+In this project we deal with the design and control of a rover that can move to desired positions. The rover consists of 3 wheels and a base_link. It consists of laser sensors that are used to detect any surrounding obstacles and map the surroundings using the gmapping package. The robot can be controlled by a non linear controller. The robot can be controlled using a website also. Different pyhton programs can are written to acheive different tasks. 
 
 ---
 
@@ -31,31 +31,57 @@ In this project we deal with the design and control of a drone that can transpor
     > source /opt/ros/melodic/setup.bash
     > mkdir -p ~/catkin_ws/src
     > cd ~/catkin_ws/
-    > catkin build
+    > catkin_make
     > source devel/setup.bash
  
  - Cloning the github repository
     > cd ~/catkin_ws/src/
     > git clone https://github.com/Electronics-Creed/Transportation-Drone.git
+
+ - Installing packages
+    > sudo apt install ros-melodic-slam-gmapping
+    > sudo apt-get install ros-melodic-rosbridge-server
  
 ---
 
 ## Technologies
 
+- ROS
+- Gmapping
 - Arduino
-- MATLAB
-- Simulink
+- HTML, CSS, Javascript
 
 ---
 
 ## How To Use
 
-#### Simulation
-Run the simulaiton.mlx file section by section in MATLAB to visualize the motion of the robotic arm which is created using the robotics toolbox. In the first and second section we create the robot model and initialize necessary parameters. In the third section we move the robot arm to a given point and in the fourth section we move the robotic arm through given set of waypoints. In the subsequent section some funtions have been defined.
+#### Running gazebo simulation
+  > roslaunch rover gazebo.launch
 
-#### Hardware
-The files used for hardware implementation are hardware_implementation1.slx and hardware_implementation2.slx. The file hardware_implementation1.slx is used to move the robot arm to a given point and activate the gripper. The second file is used to move the robotic arm through given set of waypoints and activate the gripper at the required points. Refer the circuit diagram for the connections to Arduino.
+#### Running differnt controllers
+ - Run non linear control system 
+  > rosrun rover control_system.py
+ - Run follow wall
+  > rosrun rover follow_wall.py
+ - Run obstacle avoidance
+  > rosrun rover obstacle_avoid.py
+ - Run go to goal
+  > rosrun rover simple_control.py 
 
+
+#### ROS and arduino
+ - Terminal 1
+  > sudo chmod a+rw /dev/ttyACM0
+  > rosrun rosserial_arduino serial_node.py _port:=/dev/ttyACM0 _baud:=57600
+ - Terminal 2
+  > rosrun rover ardiuno_connect.py
+
+#### ROS and SLAM
+ - Terminal 1
+  > roslaunch rover ggmapping.launch
+ - Terminal 2
+  > rviz
+  
 ---
 
 ## Other links
@@ -69,20 +95,17 @@ Youtube playlist
 ---
 
 ## References
+Gazebo plugins
+ > http://gazebosim.org/tutorials?tut=ros_gzplugins
 
-Robotics toolbox, MATLAB robotics toolbox by Peter Corke
- > https://www.petercorke.com/RTB/r9/html/SerialLink.html
+Gazebo joints
+ > http://wiki.ros.org/urdf/XML/joint
 
-Simulink Support Package for Arduino Hardware User’s Guide, Mathworks
- > https://in.mathworks.com/help/pdf_doc/supportpkg/arduino/arduino_ug.pdf
-
-3 Axis Robotic Arm , Abhivyakti Sharma, Kshitija Kanase, Vipul Pandey, C. K. Bhange
- > https://www.ijresm.com/Vol.2_2019/Vol2_Iss6_June19/IJRESM_V2_I6_25.pdf
+ros and web communication
+ > https://msadowski.github.io/ros-web-tutorial-pt1/
 
 ---
 
 ## Author Info
 
 - H P Jeevan https://www.linkedin.com/in/h-p-jeevan-08607a1a8
-- G Rohith https://www.linkedin.com/in/g-rohith-17921a1b8
-- Emyl Varghese George https://www.linkedin.com/in/emyl-varghese-george-4aa53220b
