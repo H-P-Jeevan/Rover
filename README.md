@@ -9,7 +9,6 @@ In this project we deal with the design and control of a rover that can move to 
 - [Installation](#installation)
 - [Technologies](#technologies)
 - [How To Use](#how-to-use)
-- [Other links](#other-links)
 - [References](#references)
 - [Author Info](#author-info)
 
@@ -60,49 +59,39 @@ In this project we deal with the design and control of a rover that can move to 
 
 #### Running differnt controllers
  - Run non linear control system 
-  > rosrun rover control_system.py
+    > rosrun rover control_system.py
  - Run follow wall
-  > rosrun rover follow_wall.py
+    > rosrun rover follow_wall.py
  - Run obstacle avoidance
-  > rosrun rover obstacle_avoid.py
+    > rosrun rover obstacle_avoid.py
  - Run go to goal
-  > rosrun rover simple_control.py 
+    > rosrun rover simple_control.py 
 
 
 #### ROS and arduino
  - Terminal 1
-  > sudo chmod a+rw /dev/ttyACM0
-  > rosrun rosserial_arduino serial_node.py _port:=/dev/ttyACM0 _baud:=57600
+    > sudo chmod a+rw /dev/ttyACM0
+    > rosrun rosserial_arduino serial_node.py _port:=/dev/ttyACM0 _baud:=57600
  - Terminal 2
-  > rosrun rover ardiuno_connect.py
+    > rosrun rover ardiuno_connect.py
 
 #### ROS and SLAM
  - Terminal 1
-  > roslaunch rover ggmapping.launch
+    > roslaunch rover ggmapping.launch
  - Terminal 2
-  > rviz
-  
----
-
-## Other links
-
-Drive link: 
- > https://drive.google.com/drive/folders/1rfMxBnnn4IuiM7Yzvbfr_llIJidcPY3G?usp=sharing
-
-Youtube playlist
- > https://www.youtube.com/playlist?list=PLSWRiv_s7diOQ1Fk6TX-yL9LCNg870Yoa
+    > rviz
 
 ---
 
 ## References
 Gazebo plugins
- > http://gazebosim.org/tutorials?tut=ros_gzplugins
+   > http://gazebosim.org/tutorials?tut=ros_gzplugins
 
 Gazebo joints
- > http://wiki.ros.org/urdf/XML/joint
+   > http://wiki.ros.org/urdf/XML/joint
 
 ros and web communication
- > https://msadowski.github.io/ros-web-tutorial-pt1/
+   > https://msadowski.github.io/ros-web-tutorial-pt1/
 
 ---
 
