@@ -35,7 +35,7 @@ In this project we deal with the design and control of a rover that can move to 
  
  - Cloning the github repository
     > cd ~/catkin_ws/src/
-    > git clone https://github.com/Electronics-Creed/Transportation-Drone.git
+    > git clone https://github.com/H-P-Jeevan/Rover.git
 
  - Installing packages
     > sudo apt install ros-melodic-slam-gmapping
